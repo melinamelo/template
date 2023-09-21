@@ -4,7 +4,7 @@ function Produto(props) {
   return (
     <Card sx={{ maxWidth: 345 }} key={props.key}>
         <CardMedia 
-            sx={{ height: 140 }}
+            sx={{ height: 500 }}
             image={props.imagem}
             title={props.titulo}
         />

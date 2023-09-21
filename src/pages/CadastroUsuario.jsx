@@ -70,7 +70,7 @@ function CadastroUsuario() {
                 <TextField 
                   type="text"
                   label="Nome" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={nome}
                   onChange={ (e) => setNome( e.target.value ) }
@@ -80,7 +80,7 @@ function CadastroUsuario() {
                 <TextField 
                   type="email"
                   label="Email" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={email}
                   onChange={ (e) => setEmail( e.target.value ) }
@@ -90,7 +90,7 @@ function CadastroUsuario() {
                 <TextField 
                   type="text"
                   label="CPF" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={cpf}
                   onChange={ (e) => setCpf( e.target.value ) }
@@ -100,7 +100,7 @@ function CadastroUsuario() {
                 <TextField 
                   type="text"
                   label="Telefone" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={telefone}
                   onChange={ (e) => setTelefone( e.target.value ) }
@@ -110,7 +110,7 @@ function CadastroUsuario() {
                 <TextField 
                   type="password"
                   label="Senha" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={senha}
                   onChange={ (e) => setSenha( e.target.value ) }

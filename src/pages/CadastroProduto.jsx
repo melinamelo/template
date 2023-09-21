@@ -13,11 +13,11 @@ function CadastroProduto() {
     const [imagem, setImagem] = useState("");
     const [erro, setErro] = useState(false);
     const [cadastro, setcadastro] = useState(false);
-    const [usuario, setUsuario] = useState(localStorage.getItem("usuario") || false);
     const { id } = useParams();
 
     function Cadastrar(evento) {
         evento.preventDefault();
+        const usuario = localStorage.getItem ( "usuario" );
         if (usuario) {
             fetch(process.env.REACT_APP_BACKEND + "produtos", {
                 method: (id ? "PUT" : "POST" ),
@@ -33,7 +33,7 @@ function CadastroProduto() {
                         ano: ano,
                         duracao: duracao,
                         imagem: imagem,
-                        usuario: usuario
+                        usuario: localStorage.getItem( "usuario" )
                     }
                 )
             })
@@ -65,6 +65,7 @@ function CadastroProduto() {
     useEffect( () => {
 
         if( id ) {
+            const usuario = localStorage.getItem( "usuario" );
             fetch(process.env.REACT_APP_BACKEND + "produtos/" + usuario + "/" + id, {
                 method: "GET",
                 headers: {
@@ -109,7 +110,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Nome"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
@@ -119,7 +120,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Descrição"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={descricao}
                         onChange={(e) => setDescricao(e.target.value)}
@@ -129,7 +130,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Categoria"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={categoria}
                         onChange={(e) => setCategoria(e.target.value)}
@@ -139,7 +140,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Ano"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={ano}
                         onChange={(e) => setAno(e.target.value)}
@@ -149,7 +150,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Duração"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={duracao}
                         onChange={(e) => setDuracao(e.target.value)}
@@ -159,7 +160,7 @@ function CadastroProduto() {
                     <TextField
                         type="text"
                         label="Imagem"
-                        variant="filled"
+                        variant="outlined"
                         margin="normal"
                         value={imagem}
                         onChange={(e) => setImagem(e.target.value)}

@@ -16,10 +16,13 @@ function Login() {
   useEffect( () => {
 
     if( login ) {
-        localStorage.setItem( "usuario" , JSON.stringify( usuario._id ) );
+        localStorage.setItem( "usuario" , usuario._id );
         setEmail( "" );
         setSenha( "" );
         navigate( "/dashboard" );
+    }
+    else {
+        localStorage.removeItem( "usuario" )
     }
 
   }, [ login ] );
@@ -44,12 +47,13 @@ function Login() {
 
         if( json.user ) {
             setLogin( true );
-            setUsuario( json.user );
+            setUsuario( json.user._id );
         } else {
-            setErro( true );
+            setErro( "Dados Incorretos" );
+            setLogin( false );
         }
     } )
-    .catch( ( erro ) => {  setErro( true ) } )
+    .catch( ( erro ) => {  setErro( "Ops... ocorreu um erro" ) } )
     
   }
 
@@ -72,7 +76,7 @@ function Login() {
                 <TextField 
                   type="email"
                   label="Email" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal"
                   value={email}
                   onChange={ (e) => setEmail( e.target.value ) }
@@ -81,7 +85,7 @@ function Login() {
                 <TextField 
                   type="password" 
                   label="Senha" 
-                  variant="filled" 
+                  variant="outlined" 
                   margin="normal" 
                   fullWidth
                   value={senha}
